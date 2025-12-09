@@ -1,0 +1,6 @@
+# aoc input values
+**/test.txt
+**/input.txt
+
+# pycache
+__pycache__
