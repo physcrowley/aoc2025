@@ -31,5 +31,9 @@ source, output = files(day, test)
 # Créer le fichier
 with open(f"day{day}.py", "w", encoding="utf-8") as f:
     f.write(contents)
-# Créer le dossier
-(Path(".") / f"day{day}").mkdir()
+# Créer le dossier et les fichiers vides
+day_folder: Path = (Path(".") / f"day{day}")
+day_folder.mkdir(exist_ok=True)
+for name in ["input.txt", "output.txt", "test_output.txt", "test.txt"]:
+    with open(day_folder / name, "w", encoding="utf-8") as f:
+        f.write("\n")
