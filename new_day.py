@@ -1,6 +1,11 @@
+"""
+Crée un nouveau fichier et dossier pour le numéro du jour
+de l'activité voulu
+"""
 import sys
+from pathlib import Path
 
-usage = "Usage: `python new_day.py <day_no>`"
+usage: str = "Usage: `python new_day.py <day_no>`"
 
 if len(sys.argv) != 2:
     print("Manque le jour")
@@ -14,7 +19,7 @@ if not sys.argv[1].isdecimal():
 
 day: int = int(sys.argv[1])
 
-contents = f"""from files import files
+contents: str = f"""from files import files
 
 day = {day}
 test = True
@@ -23,5 +28,8 @@ source, output = files(day, test)
 
 """
 
+# Créer le fichier
 with open(f"day{day}.py", "w", encoding="utf-8") as f:
     f.write(contents)
+# Créer le dossier
+(Path(".") / f"day{day}").mkdir()
